@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GoDesh Tours & Travels</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+const {useState}=React;
+function App(){
+ const [form,setForm]=useState({email:'',message:''});
+ const submit=e=>{e.preventDefault();alert('ধন্যবাদ! মেসেজ পাওয়া গেছে. (Demo)\nEmail: '+form.email+'\nMessage: '+form.message);setForm({email:'',message:''});};
+ return(<div>
+  <header className="bg-white shadow">
+   <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div className="flex items-center gap-4">
+     <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">GD</div>
+     <div><h1 className="font-semibold text-xl">GoDesh Tours & Travels</h1><p className="text-sm text-gray-500">Mixed international travels</p></div>
+    </div>
+   </div>
+  </header>
+  <section className="bg-[url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop')] bg-cover bg-center text-white py-24">
+   <div className="bg-black/40">
+    <div className="max-w-6xl mx-auto px-6">
+     <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">আপনার পরবর্তী যাত্রা — GoDesh-এর সাথে</h2>
+     <p className="mt-4 text-lg text-gray-200 max-w-2xl">Sea beach থেকে Switzerland—আমরা দিই নির্ভরযোগ্য ও সহজ ভ্রমণ প্যাকেজ।</p>
+     <div className="mt-8 flex gap-3"><a href="#contact" className="px-5 py-3 bg-cyan-500 rounded-lg font-medium shadow hover:opacity-90">এখনই বুক করুন</a></div>
+    </div>
+   </div>
+  </section>
+  <section id="contact" className="bg-gray-50 py-12">
+   <div className="max-w-3xl mx-auto px-6 bg-white p-8 rounded-xl shadow">
+    <h3 className="text-2xl font-bold">ইনকোয়ারি / বুকিং</h3>
+    <form className="mt-6" onSubmit={submit}>
+     <label className="block text-sm">Email</label>
+     <input type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} required className="mt-1 block w-full rounded-md border px-3 py-2" placeholder="আপনার ইমেইল" />
+     <label className="block text-sm mt-4">Message</label>
+     <textarea value={form.message} onChange={e=>setForm({...form,message:e.target.value})} required className="mt-1 block w-full rounded-md border px-3 py-2" rows="4" placeholder="আপনার মেসেজ লিখুন"></textarea>
+     <div className="mt-4 flex gap-3"><button type="submit" className="px-4 py-2 bg-cyan-500 text-white rounded">Send</button></div>
+    </form>
+   </div>
+  </section>
+  <footer className="bg-white border-t"><div className="max-w-6xl mx-auto px-6 py-6 text-center text-sm text-gray-600">© 2025 GoDesh Tours & Travels</div></footer>
+ </div>);
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
